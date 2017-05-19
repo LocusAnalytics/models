@@ -37,4 +37,17 @@ $PARSER_EVAL \
   --model_path=$MODEL_DIR/tagger-params \
   --slim_model \
   --batch_size=1024 \
+  --alsologtostderr \
+   | \
+  $PARSER_EVAL \
+  --input=stdin-conll \
+  --output=stdout-conll \
+  --hidden_layer_sizes=512,512 \
+  --arg_prefix=brain_parser \
+  --graph_builder=structured \
+  --task_context=$MODEL_DIR/context.pbtxt \
+  --model_path=$MODEL_DIR/parser-params \
+  --slim_model \
+  --batch_size=1024 \
   --alsologtostderr
+
